@@ -1,8 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import Buttons from './components/floorButtons';
-import Elevators from './components/elevatorSystem';
-import Floors from './components/floors';
+
+const Buttons = () => {
+    const [buttons, setButtons] = useState([
+        {title: 'Call', id: 0},
+        {title: 'Call', id: 1},
+        {title: 'Call', id: 2},
+        {title: 'Call', id: 3},
+        {title: 'Call', id: 4},
+        {title: 'Call', id: 5},
+        {title: 'Call', id: 6},
+        {title: 'Call', id: 7},
+        {title: 'Call', id: 8},
+        {title: 'Call', id: 9},
+    ])
+
+
+    return (
+        <div className='buttons'>
+            {buttons.map((button) => (
+                <div className='floorButtons' key={button.id}>
+                    <button onClick={()=> console.log(button.id)} >{button.title} </button>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+
+export default Buttons;
+
+
+
+
+
+
 // function App() {
 //   const [elevatorStates, setElevatorStates] = useState([
 //     { floor: 0, state: 'IDLE', queue: [] },
@@ -112,20 +143,3 @@ import Floors from './components/floors';
           
 
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1> Elevator Execrise</h1>
-        <div className="layout">
-          <Floors />
-          {/* <Building /> */}
-          < Elevators />
-          < Buttons  />
-        </div>
-      </header>
-    </div>
-  );
-}
-
-export default App;
