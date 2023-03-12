@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import photo from "../photo.svg"
 
 const Elevators = () => {
-    const [elevatorStates, setElevatorStates] = useState([
+    const [elevatorState, setElevatorState] = useState([
         { floor: 0, state: 'IDLE', id: 1 },
         { floor: 0, state: 'IDLE', id: 2 },
         { floor: 0, state: 'IDLE', id: 3 },
@@ -11,15 +11,17 @@ const Elevators = () => {
       ]);
 
     return (
-        <div className='elevators'>
-            {elevatorStates.map((elevator) => (
-                <div className={'elevator' + elevatorStates.id} key={elevatorStates.id}>
+        //check the key warning!
+        <div className='elevators'>    
+            {elevatorState.map((elevator) => (
+                <div className='elevator' key={elevatorState.id}>
                     <img src={photo} alt="elevatorPhoto" />
                 </div>
             ))}
         </div>
     )
 }
+//                 <div className={'elevator' + elevatorState.id} key={elevatorState.id}>
 
 
 export default Elevators;

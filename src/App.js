@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
 import './App.css';
+import React, { useState, useEffect } from 'react';
+import Elevators from './components/elevators';
 import Buttons from './components/floorButtons';
-import Elevators from './components/elevatorSystem';
 import Floors from './components/floors';
+import ElevatorSystem from './components/elevatorSystem';
+
 // function App() {
 //   const [elevatorStates, setElevatorStates] = useState([
 //     { floor: 0, state: 'IDLE', queue: [] },
@@ -119,7 +121,6 @@ function App() {
         <h1> Elevator Execrise</h1>
         <div className="layout">
           <Floors />
-          {/* <Building /> */}
           < Elevators />
           < Buttons  />
         </div>

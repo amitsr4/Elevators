@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 
-.floorButtons{
+.floorButton{
   margin-bottom: 10px;
   color: green;
   padding: 10px;
@@ -9,6 +9,15 @@
 }
 .floors{
   padding: 20px;
+
+}
+.callButton{
+  background-color: rgb(25, 197, 48);
+  color: white;
+}
+.waitingButton{
+  background-color: rgb(190, 62, 62);
+  color: white;
 
 }
 

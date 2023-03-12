@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const Buttons = () => {
     const [buttons, setButtons] = useState([
@@ -14,20 +14,69 @@ const Buttons = () => {
         {title: 'Call', id: 9},
     ])
 
+    const handleCallButtonClick = event => {
+        const buttonId = parseInt(event.target.parentNode.getAttribute('data-id'));
+        setButtons(prevButtons => {
+            const updatedButtons = [...prevButtons];
+            callElevator 
+            updatedButtons[buttonId].title = 'Waiting';
+            return updatedButtons;
+            
+        });
+        event.target.classList.add('waitingButton'); 
+    }
 
     return (
         <div className='buttons'>
-            {buttons.map((button) => (
-                <div className='floorButtons' key={button.id}>
-                    <button onClick={()=> console.log(button.id)} >{button.title} </button>
+            {buttons.map((button, index) => (
+                <div className='buttons' key={index} data-id={index}>
+                    <button onClick={handleCallButtonClick} className='callButton'>{button.title}</button>
                 </div>
             ))}
         </div>
     )
 }
 
-
 export default Buttons;
+
+
+// import React, { useState, useEffect } from 'react';
+
+// const Buttons = () => {
+//     const [buttons, setButtons] = useState([
+//         {title: 'Call', id: 0},
+//         {title: 'Call', id: 1},
+//         {title: 'Call', id: 2},
+//         {title: 'Call', id: 3},
+//         {title: 'Call', id: 4},
+//         {title: 'Call', id: 5},
+//         {title: 'Call', id: 6},
+//         {title: 'Call', id: 7},
+//         {title: 'Call', id: 8},
+//         {title: 'Call', id: 9},
+//     ])
+
+
+//     const handleCallButtonClick =  evt => {
+//         if(evt.title == ''){
+//             this.setButtons({title:'Waiting'});
+//             console.log(this.title);
+//         }
+//     }
+
+//     return (
+//         <div className='buttons'>
+//             {buttons.map((button) => (
+//                 <div className='floorButton' key={button.id}>
+//                     <button onClick={this.handleCallButtonClick} >{button.title} </button>
+//                 </div>
+//             ))}
+//         </div>
+//     )
+// }
+
+
+// export default Buttons;
 
 
 
