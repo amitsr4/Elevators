@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Elevators from './components/elevators';
 import Buttons from './components/buttons';
 import Floors from './components/floors';
-import ElevatorSystem from './components/elevatorSystem';
+import ElevatorSystem from './components/Elevator';
 
 
 function App() {
