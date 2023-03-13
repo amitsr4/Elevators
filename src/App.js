@@ -1,9 +1,50 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import Elevators from './components/elevators';
-import Buttons from './components/floorButtons';
+import Buttons from './components/buttons';
 import Floors from './components/floors';
 import ElevatorSystem from './components/elevatorSystem';
+
+
+function App() {
+
+
+  const [selectedButton, setSelectedButton] = useState(null);
+
+
+  const buttonClicked = (call) =>{ 
+      setSelectedButton(call);
+  }
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1> Elevator Execrise</h1>
+        <div className="layout">
+          <Floors />
+          <Elevators currElevator={selectedButton}/>
+          <Buttons call={buttonClicked}/>
+        </div>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function App() {
 //   const [elevatorStates, setElevatorStates] = useState([
@@ -114,19 +155,3 @@ import ElevatorSystem from './components/elevatorSystem';
           
 
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1> Elevator Execrise</h1>
-        <div className="layout">
-          <Floors />
-          < Elevators />
-          < Buttons  />
-        </div>
-      </header>
-    </div>
-  );
-}
-
-export default App;

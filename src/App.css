@@ -18,30 +18,27 @@
 .waitingButton{
   background-color: rgb(190, 62, 62);
   color: white;
-
 }
-
 .App-header {
   text-align: center;
   font-size: calc(6px + 2vmin);
   color: white;
 }
-
 .layout{ 
   display:grid;
   grid-template-columns: 0.2fr 2fr 0.2fr;
   grid-gap: 1px;
 }
-
 .elevators{
   display: inline-flex;
   float: left;
   width: 60%;
-  padding: 30px;
+  padding: 50px;
 }
-
 .elevators img{
-width: 100%;}
+width: 70%;
+padding: 30px;
+}
 
 
 

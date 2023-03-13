@@ -12,10 +12,9 @@ const Floors = () => {
         {title: '2nd', id: 2},
         {title: '1st', id: 1},
         {title: 'Ground Floor', id: 0},
-
-
     ])
 
+    
     return (
         <div className='floors'>
             {floors.map((floor) => (
