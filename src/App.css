@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
-* {
+body {
+  background-color: rgb(194, 208, 212);
   font-family: "Quicksand";
-  background-color: #c2cbce;
-}
 
+}
 .floors{
   padding: 30px;
   padding-bottom:25px ;
