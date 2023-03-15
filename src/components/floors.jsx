@@ -14,7 +14,6 @@ const Floors = () => {
         {title: 'Ground Floor', id: 0},
     ])
 
-
     return (
         <div className='allFloors'>
             {floors.map((floor) => (

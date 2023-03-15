@@ -2,82 +2,92 @@
 
 * {
   font-family: "Quicksand";
-  background-color: #d2e8f1;
+  background-color: #c2cbce;
 }
 
 .floors{
-  padding: 20px;
+  padding: 30px;
   padding-bottom:25px ;
+  font-size: 20px;
+
 }
 
 .allFloors{
   display:flex;
+  grid-column-start: 1;
+  align-items: flex-end;
   flex-direction: column;
   justify-content: space-evenly;
+
 }
 
 .allButtons{
   display:flex;
+  grid-column-start: 3;
   flex-direction: column;
   justify-content: space-evenly;
+  padding: 10px;
 }
 
 .callButton{
-  background-color: rgb(25, 197, 48);
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  border-color: #d2e8f1;
-  color: white;
-  padding: 5px 15px;
+  background-color: rgb(12, 173, 98);
+  font-size: medium;
 }
 
 .waitingButton{
   background-color: rgb(190, 62, 62);
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  border-color: #d2e8f1;
-  color: white;
+  font-size: medium;
 }
 
-.App-header {
+.App-header h1 {
   text-align: center;
-  font-size: calc(6px + 2vmin);
+  font-size: calc(5px +2vmin);
 }
 
 .layout{ 
   display:grid;
-  grid-template-columns: 0.2fr 2fr 0.2fr;
-  justify-items: center;
+  justify-content: center;
+  padding-left: 100px;
+  padding-right: 100px;
+
 }
 
 .elevators{
-  display: flex;
+  display: grid;
+  grid-column-start: 2;
+  grid-template-columns: repeat(5, 100px);
+  grid-template-rows: repeat(10, 100px);
   float: center;
-  width: 70%;
-  padding: 30px;
   border: 5px solid rgb(51, 54, 100);
-  align-items: flex-end;
+  background-color: white;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
 
 }
 
 .elevators img{
-  background-color: blueviolet;
-  width: 25%;
-  padding: 30px;
+  width: 30%;
+  padding: 32px;
   position:relative;
-  bottom: 0px;
-  flex-direction: column;
-  flex: 15;
+  grid-column-start: 1;
+  fill: green;
+  color: blue;
 }
 
 #elevator_1{
-  background-color: blueviolet;
-
+grid-row-start: 10;
 }
 #elevator_2{
+  grid-row-start: 10;
 }
 #elevator_3{
+  grid-row-start: 10;
 }
 .elevators #elevator_4{
+  grid-row-start: 10;
 }
 .elevators #elevator_5{
+  grid-row-start: 10;
 }
 
