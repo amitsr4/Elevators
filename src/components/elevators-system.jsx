@@ -3,75 +3,88 @@ import Elevator from "./Elevator";
 
 const ElevatorsSystem = (props) => {
   const { calledFloor } = props;
-
   const queue = [];
+  const [matchElevator, setMatchElevator] = useState({
+    floor: 0,
+    state: "STANDING",
+    id: 0,
+  });
 
   const [elevatorState, setElevatorState] = useState([
-    { floor: 0, state: "IDLE", id: 1 },
-    { floor: 1, state: "IDLE", id: 2 },
-    { floor: 2, state: "IDLE", id: 3 },
-    { floor: 8, state: "IDLE", id: 4 },
-    { floor: 4, state: "IDLE", id: 5 },
+    { floor: 0, prevFloor: 0, state: "STANDING", id: 0 },
+    { floor: 0, prevFloor: 0, state: "STANDING", id: 1 },
+    { floor: 0, prevFloor: 0, state: "STANDING", id: 2 },
+    { floor: 0, prevFloor: 0, state: "STANDING", id: 3 },
+    { floor: 0, prevFloor: 0, state: "STANDING", id: 4 },
   ]);
-  //Elevator's state can be: IDLE / MOVING-UP / MOVING-DOWN
+  //Elevator's state can be: STANDING / MOVING-UP / MOVING-DOWN
 
   useEffect(() => {
     const elevator = findElevatorByFloor(calledFloor);
+    if (elevator === null) {
+      setMatchElevator({ floor: 0, state: "STANDING", id: -1 });
+    } else {
+      setMatchElevator(elevator);
+    }
   }, [calledFloor]);
-  let prevFloor = 0;
 
   const findElevatorByFloor = (floor) => {
     if (floor != null) {
       floor = 9 - floor; //setted the floors in the other direction.
       let closestElevator = null;
       let minDistance = Infinity;
-      let direction = "IDLE";
+      let prevFloor = 0;
+      let state = "STANDING";
       //search for the closests elevator to the desire floor and put in closestElevator.
-      elevatorState.forEach((elevator) => { 
-        direction = "IDLE";
-        if (elevator.state === "IDLE") {
-          const currDistance = Math.abs(elevator.floor - floor);
+      elevatorState.forEach((elevator) => {
+        state = "STANDING";
+        if (elevatorState[elevator.id].state === "STANDING") {
+          const currDistance = Math.abs(elevatorState[elevator.id].floor - floor);
           if (currDistance < minDistance) {
             minDistance = currDistance;
-            closestElevator = elevator;
-            prevFloor = elevator.floor;
+            closestElevator = elevatorState[elevator.id];
+            prevFloor = elevatorState[elevator.id].floor;
+
           }
         }
       });
 
-      if (closestElevator.floor < floor) {
-        direction = "MOVING-UP";
-      } else if (closestElevator.floor > floor) {
-        direction = "MOVING-DOWN";
-      }
-
       if (closestElevator) {
-        setElevatorState(
-          elevatorState.map((elevator) => {
-            if (elevator.id === closestElevator.id) {
-              return { ...elevator, state: direction, floor: floor };
-            } else {
-              return elevator;
-            }
-          })
-        );
-        return { elevator: closestElevator };
-      } else {
-        queue.push(floor);
-        return null;
+        if (closestElevator.floor < floor) {
+          state = "MOVING-UP";
+        } else if (closestElevator.floor > floor) {
+          state = "MOVING-DOWN";
+        }
+        let tempElevatorState = elevatorState;
+        tempElevatorState[closestElevator.id] = {
+          ...tempElevatorState[closestElevator.id],
+          floor: floor,
+          prevFloor:prevFloor,
+          state: state,
 
-        //TODO Add check when redering if there is available elevator
+        };
+        setElevatorState(tempElevatorState);
+        // console.log("Selected elevator: ,", closestElevator.id);
+        // console.log("closestElevator: ", closestElevator.id);
+
+        return closestElevator;
       }
+      queue.push(floor);
+      return null;
+      //TODO Add check when redering if there is available elevator
     }
   };
+
   return (
     <div className="elevators">
       {elevatorState.map((elevator) => (
         <Elevator
           key={elevator.id}
-          matchElevator={elevator}
+          elevator={elevator}
+          matchElevator={matchElevator}
           calledFloor={elevator.floor}
-          prevFloor={prevFloor}
+          elevatorState={elevatorState}
+          setElevatorState={setElevatorState}
         />
       ))}
     </div>

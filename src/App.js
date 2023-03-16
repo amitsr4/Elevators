@@ -6,7 +6,10 @@ import Floors from "./components/floors";
 import { ElevatorIcon } from "./components/elevatorIcon";
 
 function App() {
-  const [selectedButton, setSelectedButton] = useState(null);
+  const [selectedButton, setSelectedButton] = useState({
+    title: "Call",
+    id: 0,
+  });
 
   //I'll use button's id to identify the floor
   const [buttons, setButtons] = useState([

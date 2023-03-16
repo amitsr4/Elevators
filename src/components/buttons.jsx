@@ -19,10 +19,6 @@ const Buttons = (props) => {
 
 export default Buttons;
 
-
-
-
-
 //I'v started learning how to use styled-components and tried to use it here.
 const Button = styled.button`
   background-color: ${(p) => p.backColor};
